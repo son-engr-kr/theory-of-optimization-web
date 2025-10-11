@@ -1,4 +1,6 @@
 
+# Visit website
+[Theory Of Optimization](https://son-engr-kr.github.io/theory-of-optimization-web)
 
 
 # Project Setup
@@ -6,6 +8,11 @@
 npm create vite@latest . -- --template react
 npm install --save-dev gh-pages
 
+```
+
+# deploy
+```
+npm run deploy
 ```
 # React + Vite
 
