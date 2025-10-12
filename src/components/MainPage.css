@@ -1,0 +1,31 @@
+.main-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.main-page h1 {
+  font-size: 3em;
+  margin-bottom: 50px;
+}
+
+.links button {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 20px 40px;
+  font-size: 1.2em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  font-weight: 600;
+}
+
+.links button:hover {
+  transform: scale(1.05);
+}
+
