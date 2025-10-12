@@ -3,8 +3,9 @@ import Plot from 'react-plotly.js';
 import './Theorem228.css';
 
 function Theorem228() {
-  const [matrix, setMatrix] = useState([[1, 0], [0, 1]]);
-  const [coneAngle, setConeAngle] = useState(90);
+  const [matrix, setMatrix] = useState([[1, 0], [1, 1]]);
+  const [coneStart, setConeStart] = useState(0);
+  const [coneEnd, setConeEnd] = useState(90);
 
   const handleMatrixChange = (i, j, value) => {
     const newMatrix = matrix.map(row => [...row]);
@@ -15,13 +16,14 @@ function Theorem228() {
     }
   };
 
-  const generateCone = (angleInDegrees, rayLength = 20) => {
-    const angleRad = (angleInDegrees * Math.PI) / 180;
+  const generateCone = (startDeg, endDeg, rayLength = 1) => {
+    const startRad = (startDeg * Math.PI) / 180;
+    const endRad = (endDeg * Math.PI) / 180;
     const numRays = 100;
     const rays = [];
     
     for (let i = 0; i <= numRays; i++) {
-      const theta = (i / numRays) * angleRad;
+      const theta = startRad + (i / numRays) * (endRad - startRad);
       rays.push({
         x: rayLength * Math.cos(theta),
         y: rayLength * Math.sin(theta)
@@ -48,17 +50,25 @@ function Theorem228() {
     }));
   };
 
-  const generatePolarCone = (angleInDegrees, rayLength = 20) => {
-    const angleRad = (angleInDegrees * Math.PI) / 180;
+  const generatePolarCone = (startDeg, endDeg, rayLength = 1) => {
+    const coneSpan = endDeg - startDeg;
+    
+    // If cone angle span >= 180°, polar cone is empty or only origin
+    if (coneSpan > 180) {
+      return [];
+    }
+    
+    const startRad = (startDeg * Math.PI) / 180;
+    const endRad = (endDeg * Math.PI) / 180;
     const numRays = 100;
     const rays = [];
     
-    // C가 0 ~ θ일 때, C°는 (θ + 90°) ~ 270°
-    const startAngle = angleRad + Math.PI / 2;  // θ + 90°
-    const endAngle = 3 * Math.PI / 2;            // 270°
+    // When C spans from α to β, C° spans from (β + 90°) to (α + 270°)
+    const polarStart = endRad + Math.PI / 2;      // β + 90°
+    const polarEnd = startRad + 3 * Math.PI / 2;  // α + 270°
     
     for (let i = 0; i <= numRays; i++) {
-      const theta = startAngle + (i / numRays) * (endAngle - startAngle);
+      const theta = polarStart + (i / numRays) * (polarEnd - polarStart);
       rays.push({
         x: rayLength * Math.cos(theta),
         y: rayLength * Math.sin(theta)
@@ -76,10 +86,13 @@ function Theorem228() {
     }));
   };
 
-  const coneC = generateCone(coneAngle);
+  const coneC = generateCone(coneStart, coneEnd);
   const coneK = transformCone(coneC);
-  const polarConeC = generatePolarCone(coneAngle);
+  const polarConeC = generatePolarCone(coneStart, coneEnd);
   const polarConeK = transformPolarCone(polarConeC);
+  
+  const coneSpan = coneEnd - coneStart;
+  const isPolarConeEmpty = coneSpan > 180;
 
   const plotData = [
     {
@@ -128,13 +141,13 @@ function Theorem228() {
     width: 1200,
     height: 800,
     xaxis: { 
-      range: [-25, 25], 
+      range: [-2, 2], 
       zeroline: true,
       title: 'x₁',
       scaleanchor: 'y'
     },
     yaxis: { 
-      range: [-25, 25], 
+      range: [-2, 2], 
       zeroline: true,
       title: 'x₂'
     },
@@ -187,15 +200,34 @@ function Theorem228() {
         </div>
 
         <div className="control-group">
-          <label>Cone C Angle: {coneAngle}°</label>
+          <label>Cone C Start: {coneStart}°</label>
           <input 
             type="range" 
-            min="10" 
-            max="180" 
-            value={coneAngle}
-            onChange={(e) => setConeAngle(parseInt(e.target.value))}
+            min="0" 
+            max="360" 
+            value={coneStart}
+            onChange={(e) => setConeStart(parseInt(e.target.value))}
             className="slider"
           />
+          
+          <label>Cone C End: {coneEnd}°</label>
+          <input 
+            type="range" 
+            min="0" 
+            max="360" 
+            value={coneEnd}
+            onChange={(e) => setConeEnd(parseInt(e.target.value))}
+            className="slider"
+          />
+          
+          <div className="cone-info">
+            Cone span: {coneSpan}°
+            {isPolarConeEmpty && (
+              <div className="warning">
+                ⚠️ Polar cone is {'{'}0{'}'} (span {'>'} 180°)
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
