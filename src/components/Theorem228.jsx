@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Plot from 'react-plotly.js';
+import 'katex/dist/katex.min.css';
+import { BlockMath, InlineMath } from 'react-katex';
 import './Theorem228.css';
 
 function Theorem228() {
@@ -162,6 +164,24 @@ function Theorem228() {
 
   return (
     <div className="theorem-container">
+      <div className="theorem-header">
+        <h2>Theorem 2.28</h2>
+        <div className="theorem-statement">
+          <p>
+            <strong>Assume that</strong> <InlineMath math="C" /> is a closed convex cone in <InlineMath math="\mathbb{R}^m" /> 
+            and <InlineMath math="A" /> is an <InlineMath math="m \times n" /> matrix.
+          </p>
+          <p>
+            <strong>Let</strong>
+          </p>
+          <BlockMath math="K = \{x \in \mathbb{R}^n : Ax \in C\}" />
+          <p>
+            <strong>Then</strong> <InlineMath math="K" /> is a closed convex cone and
+          </p>
+          <BlockMath math="K^\circ = \{A^T\lambda : \lambda \in C^\circ\}" />
+        </div>
+      </div>
+
       <div className="controls">
         <div className="control-group">
           <label>Matrix A:</label>
