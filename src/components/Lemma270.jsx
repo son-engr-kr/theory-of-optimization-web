@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import Plot from 'react-plotly.js';
 import 'katex/dist/katex.min.css';
 import { BlockMath, InlineMath } from 'react-katex';
@@ -426,6 +427,9 @@ function Lemma270() {
 
   return (
     <div className="lemma-container">
+      <Link to="/" className="back-button">
+        ← Back
+      </Link>
       <div className="lemma-header">
         <h2>Lemma 2.70: Local Lipschitz Continuity of Convex Functions</h2>
         <div className="lemma-statement">

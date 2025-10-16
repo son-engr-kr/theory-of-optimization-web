@@ -1,16 +1,21 @@
+import { Link } from 'react-router-dom'
 import './MainPage.css';
 
-function MainPage({ onNavigate }) {
+function MainPage() {
   return (
     <div className="main-page">
       <h1>Theory of Optimization</h1>
       <div className="links">
-        <button onClick={() => onNavigate('theorem-2.28')}>
-          Theorem 2.28: Convex Cone Mapping
-        </button>
-        <button onClick={() => onNavigate('lemma-2.70')}>
-          Lemma 2.70: Local Lipschitz Continuity
-        </button>
+        <Link to="/theorem-2.28">
+          <button>
+            Theorem 2.28: Convex Cone Mapping
+          </button>
+        </Link>
+        <Link to="/lemma-2.70">
+          <button>
+            Lemma 2.70: Local Lipschitz Continuity
+          </button>
+        </Link>
       </div>
     </div>
   );

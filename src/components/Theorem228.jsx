@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Plot from 'react-plotly.js';
 import 'katex/dist/katex.min.css';
 import { BlockMath, InlineMath } from 'react-katex';
@@ -164,6 +165,9 @@ function Theorem228() {
 
   return (
     <div className="theorem-container">
+      <Link to="/" className="back-button">
+        ← Back
+      </Link>
       <div className="theorem-header">
         <h2>Theorem 2.28</h2>
         <div className="theorem-statement">
