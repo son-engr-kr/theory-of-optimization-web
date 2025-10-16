@@ -1,0 +1,380 @@
+.lemma-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lemma-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.lemma-header h2 {
+  margin: 0 0 20px 0;
+  font-size: 28px;
+}
+
+.lemma-statement {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.lemma-statement p {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Calculations Display */
+.calculations {
+  background: white;
+  border: 3px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.calculations.satisfied {
+  border-color: #4caf50;
+  background: linear-gradient(to right, #f1f8f4, #ffffff);
+}
+
+.calculations.violated {
+  border-color: #f44336;
+  background: linear-gradient(to right, #fef1f0, #ffffff);
+}
+
+.calc-row {
+  display: flex;
+  gap: 30px;
+  margin: 10px 0;
+  font-size: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.calc-row strong {
+  font-weight: 600;
+}
+
+.condition-check {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+.calculations.satisfied .condition-check {
+  color: #2e7d32;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.calculations.violated .condition-check {
+  color: #c62828;
+  background: rgba(244, 67, 54, 0.1);
+}
+
+.distance-check {
+  font-family: 'Courier New', monospace;
+  padding: 4px 12px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+/* Controls */
+.controls {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.control-group {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.control-group:has(.slider) {
+  align-items: flex-start;
+  padding-top: 8px;
+}
+
+/* 슬라이더가 있는 컨트롤 그룹의 레이아웃 고정 */
+.control-group:has(.slider) {
+  display: grid;
+  grid-template-columns: 200px 100px 100px 1fr;
+  align-items: center;
+  gap: 15px;
+}
+
+.control-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* 슬라이더가 있는 그룹의 라벨 */
+.control-group:has(.slider) label {
+  grid-column: 1;
+  justify-self: start;
+}
+
+/* 값 표시 스타일 */
+.value-display {
+  grid-column: 2;
+  font-weight: 600;
+  color: #333;
+  font-size: 15px;
+  text-align: center;
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  border: 2px solid #ddd;
+}
+
+.function-select {
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 200px;
+  margin-right: 15px;
+}
+
+.function-select:hover {
+  border-color: #667eea;
+}
+
+.function-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.function-type {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.function-type.convex {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.function-type.non-convex {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #ddd;
+  outline: none;
+  transition: background 0.2s;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+/* 슬라이더가 있는 그룹의 슬라이더 */
+.control-group:has(.slider) .slider {
+  grid-column: 4;
+  width: 100%;
+}
+
+.slider:hover {
+  background: #ccc;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background: #5568d3;
+  transform: scale(1.1);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-moz-range-thumb:hover {
+  background: #5568d3;
+  transform: scale(1.1);
+}
+
+/* Number input styling */
+.number-input {
+  width: 100px;
+  padding: 8px 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+  transition: border-color 0.2s;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+/* 슬라이더가 있는 그룹의 number input */
+.control-group:has(.slider) .number-input {
+  grid-column: 3;
+  width: 100px;
+}
+
+
+.number-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.number-input:hover {
+  border-color: #ccc;
+}
+
+.auto-l-toggle {
+  margin-left: 20px;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.auto-l-toggle input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+.auto-l-info {
+  background: #e3f2fd;
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 4px solid #2196f3;
+  color: #1565c0;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Plot */
+.plot-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Insights */
+.insights {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.insights h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.insights ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.insights li {
+  padding: 12px 0 12px 30px;
+  position: relative;
+  line-height: 1.6;
+  color: #444;
+  font-size: 15px;
+}
+
+.insights li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.insights strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .lemma-container {
+    padding: 10px;
+  }
+
+  .lemma-header h2 {
+    font-size: 22px;
+  }
+
+  .calc-row {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .function-select {
+    min-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .plot-wrapper {
+    padding: 10px;
+  }
+}
+

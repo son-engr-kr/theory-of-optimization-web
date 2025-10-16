@@ -8,6 +8,9 @@ function MainPage({ onNavigate }) {
         <button onClick={() => onNavigate('theorem-2.28')}>
           Theorem 2.28: Convex Cone Mapping
         </button>
+        <button onClick={() => onNavigate('lemma-2.70')}>
+          Lemma 2.70: Local Lipschitz Continuity
+        </button>
       </div>
     </div>
   );
