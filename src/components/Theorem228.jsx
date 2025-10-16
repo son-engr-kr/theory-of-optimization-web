@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Plot from 'react-plotly.js';
-import 'katex/dist/katex.min.css';
 import { BlockMath, InlineMath } from 'react-katex';
 import './Theorem228.css';
 
