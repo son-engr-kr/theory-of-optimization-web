@@ -10,6 +10,11 @@ npm install --save-dev gh-pages
 
 ```
 
+# Run in Local
+```
+npm run dev
+```
+
 # deploy
 ```
 npm run deploy
