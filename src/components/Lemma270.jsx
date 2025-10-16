@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Plot from 'react-plotly.js';
+import { Plotly } from 'plotly.js-dist-min';
 import 'katex/dist/katex.min.css';
 import { BlockMath, InlineMath } from 'react-katex';
 import './Lemma270.css';
