@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Plot from 'react-plotly.js';
-import { BlockMath, InlineMath } from 'react-katex';
+import { BlockMath, InlineMath } from './KaTeXText';
 import './Theorem228.css';
 
 function Theorem228() {
